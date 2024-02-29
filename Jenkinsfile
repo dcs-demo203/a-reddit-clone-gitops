@@ -26,13 +26,13 @@ pipeline {
          stage("Push the changed deployment file to GitHub") {
             steps {
                 sh """
-                    git config --global user.name "dcs_demo203-9x"
+                    git config --global user.name "dcs_demo203"
                     git config --global user.email "dcs_demo@outlook.com"
                     git add deployment.yaml
                     git commit -m "Updated Deployment Manifest"
                 """
                 withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
-                    sh "git push https://github.com/Ashfaque-9x/a-reddit-clone-gitops main"
+                    sh "git push https://github.com/dcs-demo203/a-reddit-clone-gitops.git main"
                 }
             }
          }
